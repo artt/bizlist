@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import SearchBox from './SearchBox'
-import Card from './Card'
+import CardList from './CardList'
 
 class App extends React.Component {
 
@@ -14,21 +14,25 @@ class App extends React.Component {
   }
 
   onSearchChange = (event) => {
-    this.setState({searchfield: event.target.value})
-    console.log(this.searchfield)
+    this.setState({searchfield: event.target.value.toLowerCase()})
+  }
+
+  filterEntry(entry) {
+    return entry.name.t.toLowerCase().includes(this.state.searchfield)
   }
 
   render() {
-    console.log(this.state);
-    if (!this.state.entries.length) {
+    const {entries} = this.state;
+    const filteredEntries = entries.filter(entry => this.filterEntry(entry));
+    if (!entries.length) {
       return <h1>Loading</h1>
     }
     else {
       return (
         <div className="App">
           <h1>Hiiii</h1>
-          <Card name={this.state.entries[0].name.t} />
           <SearchBox searchchange={this.onSearchChange} />
+          <CardList entries={filteredEntries} />
         </div>
       );
     }
