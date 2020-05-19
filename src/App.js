@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
 import SearchBox from './SearchBox'
 import CardList from './CardList'
+import './style.css';
 
 class App extends React.Component {
 
@@ -19,6 +19,11 @@ class App extends React.Component {
 
   filterEntry(entry) {
     return entry.name.t.toLowerCase().includes(this.state.searchfield)
+      || entry.fullname.t.toLowerCase().includes(this.state.searchfield)
+      || entry.keyword.t.toLowerCase().includes(this.state.searchfield)
+      || entry.facebook.t.toLowerCase().includes(this.state.searchfield)
+      || entry.line.t.toLowerCase().includes(this.state.searchfield)
+      || entry.website.t.toLowerCase().includes(this.state.searchfield)
   }
 
   render() {

@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;100&display=swap');
+
+html {
+	height: 100%;
+}
+
+body {
+	background-image: linear-gradient(to bottom, $primary-color 50%, $secondary-color 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+}
