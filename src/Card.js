@@ -5,29 +5,29 @@ import './style.css';
 
 function trimURL(fullurl) {
 	const tmp = fullurl.indexOf('www.')   
-  let startPos = tmp + 4  
-  if (tmp === -1) {  
-    startPos = fullurl.indexOf('//') + 2    
-  }   
-  let endPos = fullurl.indexOf('/', startPos) 
-  if (endPos == -1) { 
-    endPos = fullurl.length 
-  }   
-  return fullurl.substring(startPos, endPos)  
+	let startPos = tmp + 4  
+	if (tmp === -1) {  
+		startPos = fullurl.indexOf('//') + 2    
+	}   
+	let endPos = fullurl.indexOf('/', startPos) 
+	if (endPos == -1) { 
+		endPos = fullurl.length 
+	}   
+	return fullurl.substring(startPos, endPos)  
 }
 
 function trimPhone(phonetext) {
-  phonetext = phonetext.trim()
-  const patt = /(\d{4}|\d-\d{4}-\d{4}|\d{3}-\d{3}-\d{4}|\d{3}-\d{3}-\d{3})/;
-  const tocall = phonetext.match(patt)[0];
-  return tocall;
+	phonetext = phonetext.trim()
+	const patt = /(\d{4}|\d-\d{4}-\d{4}|\d{3}-\d{3}-\d{4}|\d{3}-\d{3}-\d{3})/;
+	const tocall = phonetext.match(patt)[0];
+	return tocall;
 }
 
 function Card({entry}) {
 	return(
 		<div className="card">
-			<h2>{entry.fullname.t + (entry.remark.t === '' ? '' : ' (' + entry.remark.t + ')')}</h2>
-			<p>{
+			<h2>{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</h2>
+			<p>{ entry.call.t &&
 				entry.call.t.split('\n').map((item, i) => {
 					return (
 						<span>
@@ -36,7 +36,9 @@ function Card({entry}) {
 					);
 				})
 			}</p>
-			<p><a href={entry.website.t} target='_blank'>{trimURL(entry.website.t)}</a></p>
+			<p>{ entry.website.t &&
+				<a href={entry.website.t} target='_blank'>{trimURL(entry.website.t)}</a>
+			}</p>
 		</div>
 	);
 }
