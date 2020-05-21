@@ -26,8 +26,8 @@ function trimPhone(phonetext) {
 function Card({entry}) {
 	return(
 		<div className="card">
-			<h2>{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</h2>
-			<p>{ entry.call.t &&
+			<div className="title">{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</div>
+			<div className="phone">{ entry.call.t &&
 				entry.call.t.split('\n').map((item, i) => {
 					return (
 						<span>
@@ -35,10 +35,10 @@ function Card({entry}) {
 						</span>
 					);
 				})
-			}</p>
-			<p>{ entry.website.t &&
+			}</div>
+			<div className="website">{ entry.website.t &&
 				<a href={entry.website.t} target='_blank'>{trimURL(entry.website.t)}</a>
-			}</p>
+			}</div>
 		</div>
 	);
 }
