@@ -16,7 +16,7 @@ a:hover {
 }
 
 .card:hover {
-	background-color: rgba(255, 255, 255, 0.9);
+	background-color: rgba(255, 255, 255, 0.95);
 }
 
 .title {
@@ -24,8 +24,22 @@ a:hover {
 	font-weight: 400;
 }
 
+.phone {
+	font-size: small;
+}
+
 .phone:before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f879\00a0 ";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f879\00a0 ";
+}
+
+.website {
+	font-size: small;
+}
+
+.website:before {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f35d\00a0 ";
 }
