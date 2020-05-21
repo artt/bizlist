@@ -10,10 +10,16 @@ h1 {
   width: 300px;
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 5px 20px -10px black;
 }
 
-h2 {
+.title {
+  font-size: x-large;
   font-weight: 400;
+}
+
+.phone a {
+  text-decoration: none;
 }
 
 html {
