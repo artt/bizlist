@@ -1,8 +1,8 @@
 .card {
-	margin: 20px;
+	margin: $card-margin;
 	padding: 20px;
 	border-radius: 10px;
-	width: 300px;
+	width: 400px;
 	display: inline-block;
 	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow: 0 5px 20px -10px black;
