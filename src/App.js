@@ -34,10 +34,14 @@ class App extends React.Component {
 		}
 		else {
 			return (
-				<div className="App">
-					<h1>Hiiii</h1>
-					<SearchBox searchchange={this.onSearchChange} />
-					<CardList entries={filteredEntries} />
+				<div className='App'>
+					<div id='left'>
+						<div className='logo'>BizList</div>
+						<SearchBox searchchange={this.onSearchChange} />
+					</div>
+					<div id='right'>
+						<CardList entries={filteredEntries} />
+					</div>
 				</div>
 			);
 		}
