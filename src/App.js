@@ -37,7 +37,7 @@ class App extends React.Component {
 				<div className='App'>
 					<div id='left'>
 						<div className='logo'>BizList</div>
-						<SearchBox className='searchbox' searchchange={this.onSearchChange} />
+						<SearchBox searchchange={this.onSearchChange} />
 					</div>
 					<div id='right'>
 						<CardList entries={filteredEntries} />
