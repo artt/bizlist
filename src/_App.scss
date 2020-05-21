@@ -2,21 +2,41 @@
 
 .logo {
 	font-family: 'Khand', sans-serif;
-	font-size: 5em;
+	font-size: 6em;
 	color: white;
-	margin: 50px 30px 0 30px;
+	transition: 0.5s;
+	transition-timing-function: ease-in-out;
+	cursor: default;
+	margin-top: -25px;
+}
+
+.logo:hover {
+	color: #cccccc;
 }
 
 .searchbox {
-	margin: 0 30px;
+	padding: 5px;
+	border: none;
+	border-radius: 3px;
+	width: 100%;
+	font-family: $main-font, sans-serif;
 }
 
 #left {
 	position: fixed;
 	text-align: center;
-	width: 300px;
+	width: 240px;
+	padding: 30px;
 }
 
 #right {
-	margin-left: 300px;
+	margin-left: 300px + 30px;
+	margin-right: 20px;
+	padding: 30px;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: $card-gap;
 }
