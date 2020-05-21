@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url(https://use.fontawesome.com/releases/v5.13.0/css/all.css);
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap");
 .logo {
@@ -51,10 +53,15 @@
 
 a {
   color: #23517A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3c85c7;
 }
 
 .card:hover {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .title {
@@ -62,8 +69,10 @@ a {
   font-weight: 400;
 }
 
-.phone a {
-  text-decoration: none;
+.phone:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " ";
 }
 
 html {

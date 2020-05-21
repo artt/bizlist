@@ -8,10 +8,15 @@
 
 a {
 	color: $primary-color;
+	text-decoration: none;
+}
+
+a:hover {
+	color: lighten($primary-color, 20%);
 }
 
 .card:hover {
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 .title {
@@ -19,6 +24,8 @@ a {
 	font-weight: 400;
 }
 
-.phone a {
-	text-decoration: none;
+.phone:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f879\00a0 ";
 }

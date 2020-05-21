@@ -27,12 +27,14 @@ function Card({entry}) {
 	return(
 		<div className="card">
 			<div className="title">{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</div>
-			<div className="phone">{ entry.call.t &&
+			<div>{ entry.call.t &&
 				entry.call.t.split('\n').map((item, i) => {
 					return (
-						<span>
-							<a href={`tel:${trimPhone(item)}`}>{item}</a><br />
+						<a href={`tel:${trimPhone(item)}`}>
+						<span className="phone">
+							{item}<br />
 						</span>
+						</a>
 					);
 				})
 			}</div>
