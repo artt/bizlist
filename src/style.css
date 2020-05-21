@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap");
-h1 {
+@import url("https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap");
+.logo {
+  font-family: "Khand", sans-serif;
+  font-size: 5em;
   color: white;
+  margin: 10px 30px 0 30px;
+}
+
+.searchbox {
+  margin: 0 30px;
 }
 
 .card {
@@ -20,6 +28,11 @@ h1 {
 
 .phone a {
   text-decoration: none;
+}
+
+.container {
+  display: inline-flex;
+  flex-wrap: wrap;
 }
 
 html {

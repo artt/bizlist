@@ -4,6 +4,7 @@ function SearchBox({searchchange}) {
 	return(
 		<div>
 			<input
+				className='searchbox'
 				type='search'
 				placeholder='company name'
 				onChange={searchchange}
