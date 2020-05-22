@@ -1,0 +1,29 @@
+.logo {
+	font-family: 'Khand', sans-serif;
+	font-size: 6em;
+  line-height: 0.635;
+	color: white;
+	transition: 0.5s;
+	transition-timing-function: ease-in-out;
+	cursor: default;
+	margin-top: -25px;
+	cursor: default;
+}
+
+.special-i {
+  display: inline-block;
+}
+
+.stack {
+    display: block;
+}
+
+.logo .bouncing {
+  color: white;
+  transition: transform 0.5s, color 2s;
+}
+
+.logo:hover .bouncing {
+  color: red;
+  transform: translate3d(0, -10px, 0)
+}
