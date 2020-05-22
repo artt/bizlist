@@ -1,6 +1,7 @@
 import React from 'react';
-import SearchBox from './SearchBox'
-import CardList from './CardList'
+import SearchBox from './SearchBox';
+import CardList from './CardList';
+import Logo from './Logo';
 import './style.css';
 
 class App extends React.Component {
@@ -36,7 +37,7 @@ class App extends React.Component {
 			return (
 				<div className='App'>
 					<div id='left'>
-						<div className='logo'>BizList</div>
+						<Logo />
 						<SearchBox searchchange={this.onSearchChange} />
 					</div>
 					<div id='right'>
