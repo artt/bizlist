@@ -1,13 +1,16 @@
 .logo {
 	font-family: 'Khand', sans-serif;
-	font-size: 6em;
+	font-size: 5em;
   line-height: 0.635;
 	color: white;
 	transition: 0.5s;
 	transition-timing-function: ease-in-out;
 	cursor: default;
-	margin-top: -25px;
 	cursor: default;
+
+	@include size-lg {
+		font-size: 7em;
+	}
 }
 
 .special-i {
@@ -25,5 +28,5 @@
 
 .logo:hover .bouncing {
   color: red;
-  transform: translate3d(0, -10px, 0)
+  transform: translateY(-10px);
 }

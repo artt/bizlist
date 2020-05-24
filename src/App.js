@@ -36,11 +36,14 @@ class App extends React.Component {
 		else {
 			return (
 				<div className='App'>
-					<div id='left'>
-						<Logo />
-						<SearchBox searchchange={this.onSearchChange} />
+					<div id='area-logo'>
+						<div id='logo-background' />
+						<div id='logo-wrapper'>
+							<Logo />
+							<SearchBox searchchange={this.onSearchChange} />
+						</div>
 					</div>
-					<div id='right'>
+					<div id='area-content'>
 						<CardList entries={filteredEntries} />
 					</div>
 				</div>

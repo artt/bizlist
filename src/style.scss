@@ -1,15 +1,22 @@
 @import url(https://use.fontawesome.com/releases/v5.13.0/css/all.css);
 
+
+
 $main-font: 'Prompt';
 
 $primary-color: #23517A;
 $secondary-color: #1D7F5A;
 
-$page-margin: 50px;
+// $page-margin: 50px;
 
-$card-gap: 30px;
+$card-gap: 20px;
 
+$screen-break: 1200px;
+@mixin size-lg {
+	@media (min-width: #{$screen-break}) {@content;}
+}
+
+@import 'index';
 @import 'App';
 @import 'Card';
 @import 'Logo';
-@import 'index';

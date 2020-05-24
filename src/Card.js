@@ -30,7 +30,7 @@ function Card({entry}) {
 			<div>{ entry.call.t &&
 				entry.call.t.split('\n').map((item, i) => {
 					return (
-						<a href={`tel:${trimPhone(item)}`}>
+						<a href={`tel:${trimPhone(item)}`} key={i}>
 							<span className='phone'>
 								{item}<br />
 							</span>

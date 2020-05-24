@@ -2,28 +2,70 @@
 
 .searchbox {
 	text-align: center;
+	margin-top: 5px;
 	padding: 5px;
 	border: none;
 	border-radius: 3px;
-	width: 100%;
 	font-family: $main-font, sans-serif;
+	width: 100%;
 }
 
-#left {
+#area-logo {
+	display: table-cell;
+  vertical-align: middle;
 	position: fixed;
+	top: 0;
+	width: 100%;
+	// background: darker($primary-color, 10%);
+	z-index: 10;
 	text-align: center;
-	width: 240px;
-	padding: 30px;
+
+	@include size-lg {
+		background: unset;
+		width: 350px;
+		margin: 30px;
+		// width: 240px;
+		// padding: 30px;
+	}
 }
 
-#right {
-	margin-left: 300px + 30px;
-	margin-right: 20px;
-	padding: 30px;
+#logo-background {
+	position: fixed;
+	top: 0;
+	height: 200px;
+	width: 100%;
+	// background: red;
+	background-image: linear-gradient(to bottom, darken($primary-color, 10%) 80%, rgba(darken($primary-color, 10%), 0) 100%);
+	z-index: -1;
+
+	@include size-lg {
+		display: none;
+	}
+}
+
+#logo-wrapper {
+	display: inline-block;
+}
+
+#area-content {
+	margin-top: 200px;
+
+	@include size-lg {
+		margin-top: unset;
+		margin-left: 350px;
+		margin-right: 20px;
+		padding: 30px;
+	}
 }
 
 .container {
+	margin: $card-gap;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: $card-gap;
+
+  @include size-lg {
+  	margin: $card-gap + 10px;
+  	gap: $card-gap + 10px;
+  }
 }

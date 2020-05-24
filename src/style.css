@@ -1,36 +1,92 @@
 @charset "UTF-8";
 @import url(https://use.fontawesome.com/releases/v5.13.0/css/all.css);
-@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap");
+html {
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(to bottom, #183752 50%, #186a4b 200%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: "Prompt", sans-serif;
+  text-align: center;
+}
+
 .searchbox {
   text-align: center;
+  margin-top: 5px;
   padding: 5px;
   border: none;
   border-radius: 3px;
-  width: 100%;
   font-family: "Prompt", sans-serif;
+  width: 100%;
 }
 
-#left {
+#area-logo {
+  display: table-cell;
+  vertical-align: middle;
   position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   text-align: center;
-  width: 240px;
-  padding: 30px;
+}
+@media (min-width: 1200px) {
+  #area-logo {
+    background: unset;
+    width: 350px;
+    margin: 30px;
+  }
 }
 
-#right {
-  margin-left: 330px;
-  margin-right: 20px;
-  padding: 30px;
+#logo-background {
+  position: fixed;
+  top: 0;
+  height: 200px;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #183752 80%, rgba(24, 55, 82, 0) 100%);
+  z-index: -1;
+}
+@media (min-width: 1200px) {
+  #logo-background {
+    display: none;
+  }
+}
+
+#logo-wrapper {
+  display: inline-block;
+}
+
+#area-content {
+  margin-top: 200px;
+}
+@media (min-width: 1200px) {
+  #area-content {
+    margin-top: unset;
+    margin-left: 350px;
+    margin-right: 20px;
+    padding: 30px;
+  }
 }
 
 .container {
+  margin: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+@media (min-width: 1200px) {
+  .container {
+    margin: 30px;
+    gap: 30px;
+  }
 }
 
 .card {
+  text-align: left;
   padding: 20px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -78,14 +134,18 @@ a:hover {
 
 .logo {
   font-family: "Khand", sans-serif;
-  font-size: 6em;
+  font-size: 5em;
   line-height: 0.635;
   color: white;
   transition: 0.5s;
   transition-timing-function: ease-in-out;
   cursor: default;
-  margin-top: -25px;
   cursor: default;
+}
+@media (min-width: 1200px) {
+  .logo {
+    font-size: 7em;
+  }
 }
 
 .special-i {
@@ -103,19 +163,7 @@ a:hover {
 
 .logo:hover .bouncing {
   color: red;
-  transform: translate3d(0, -10px, 0);
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  background-image: linear-gradient(to bottom, #183752 50%, #14553d 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: 50px;
-  font-family: "Prompt", sans-serif;
+  transform: translateY(-10px);
 }
 
 /*# sourceMappingURL=style.css.map */
