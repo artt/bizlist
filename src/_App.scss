@@ -14,18 +14,17 @@
 	display: table-cell;
   vertical-align: middle;
 	position: fixed;
-	top: 0;
+	top: 10px;
+	// height: 200px;
 	width: 100%;
-	// background: darker($primary-color, 10%);
 	z-index: 10;
 	text-align: center;
 
 	@include size-lg {
 		background: unset;
+		top: unset;
 		width: 350px;
 		margin: 30px;
-		// width: 240px;
-		// padding: 30px;
 	}
 }
 
@@ -34,7 +33,6 @@
 	top: 0;
 	height: 200px;
 	width: 100%;
-	// background: red;
 	background-image: linear-gradient(to bottom, darken($primary-color, 10%) 80%, rgba(darken($primary-color, 10%), 0) 100%);
 	z-index: -1;
 
