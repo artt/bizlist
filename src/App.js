@@ -3,6 +3,7 @@ import SearchBox from './SearchBox';
 import CardList from './CardList';
 import Logo from './Logo';
 import './style.css';
+import * as myutil from './myutil';
 
 class App extends React.Component {
 
@@ -19,12 +20,42 @@ class App extends React.Component {
 	}
 
 	filterEntry(entry) {
+		// this.scoreEntry(entry)
 		return entry.name.t.toLowerCase().includes(this.state.searchfield)
 			|| entry.fullname.t.toLowerCase().includes(this.state.searchfield)
 			|| entry.keyword.t.toLowerCase().includes(this.state.searchfield)
 			|| entry.facebook.t.toLowerCase().includes(this.state.searchfield)
 			|| entry.line.t.toLowerCase().includes(this.state.searchfield)
 			|| entry.website.t.toLowerCase().includes(this.state.searchfield)
+	}
+
+	/* 
+	 *Takes in an entry and gives a match score [0–1] based on the searchfield.
+	 */
+	scoreEntry(entry) {
+		
+		const sf = this.state.searchfield;
+		const idxName = entry.name.t.toLowerCase().indexOf(sf);
+		const idxNameFull = entry.fullname.t.toLowerCase().indexOf(sf);
+		// deal with banks
+		let idxNameBank = -1;
+		if (entry.name.t.substring(0, 6) === 'ธนาคาร') {
+			idxNameBank = entry.name.t.substring(0, 6).indexOf(sf);
+		}
+
+		// process other entries
+		
+		let ref = [entry.name.t, entry.fullname.t]
+		if (entry.name.t.substring(0, 6) === 'ธนาคาร') {
+			ref = ref.concat(entry.name.t.substring(6))
+		}
+		ref = ref.concat(entry.keyword.t.split(','))
+			.concat(myutil.trimURL(entry.website.t))
+			.concat(myutil.trimFacebook(entry.facebook.t))
+			.concat(entry.line.t)
+			.concat(entry.call.t.split('\n'))
+
+		
 	}
 
 	render() {

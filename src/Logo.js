@@ -4,14 +4,14 @@ function Logo() {
 	return(
 		<div className='logo'>
 			B{/*
-				    */}<span class="special-i">
-	      <span class="stack">.</span>
-	      <span class="stack">ı</span>
+				    */}<span className="special-i">
+	      <span className="stack">.</span>
+	      <span className="stack">ı</span>
 	    </span>{/*
 	    	    */}zL{/*
-	    	    	    */}<span class="special-i">
-	      <span class="stack bouncing">.</span>
-	      <span class="stack">ı</span>
+	    	    	    */}<span className="special-i">
+	      <span className="stack bouncing">.</span>
+	      <span className="stack">ı</span>
 	    </span>{/*
 	    */}st
 		</div>
