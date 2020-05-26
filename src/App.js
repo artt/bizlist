@@ -23,7 +23,7 @@ class App extends React.Component {
 	filterEntries(entries, sf) {
 		let tmp = [];
 		console.log(sf)
-		for (const [i, e] of entries.entries()) {
+		for (const e of entries) {
 			let score = this.scoreEntry(e, sf);
 			if (score > 0) {
 				tmp.push(Object.assign(e, {'score': score}));
@@ -44,8 +44,8 @@ class App extends React.Component {
 
 		// top entries
 		let ref_names = [entry.name.t, entry.fullname.t];
-		if (entry.name.t.substring(0, 6) === 'ธนาคาร') {
-			ref_names = ref_names.concat(entry.name.t.substring(6));
+		if (entry.fullname.t.substring(0, 6) === 'ธนาคาร') {
+			ref_names = ref_names.concat(entry.fullname.t.substring(6));
 		}
 		// keywords
 		let ref_keywords = [];
