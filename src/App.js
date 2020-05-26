@@ -16,51 +16,75 @@ class App extends React.Component {
 	}
 
 	onSearchChange = (event) => {
+		console.log('searchchange...')
 		this.setState({searchfield: event.target.value.toLowerCase()})
 	}
 
-	filterEntry(entry) {
-		// this.scoreEntry(entry)
-		return entry.name.t.toLowerCase().includes(this.state.searchfield)
-			|| entry.fullname.t.toLowerCase().includes(this.state.searchfield)
-			|| entry.keyword.t.toLowerCase().includes(this.state.searchfield)
-			|| entry.facebook.t.toLowerCase().includes(this.state.searchfield)
-			|| entry.line.t.toLowerCase().includes(this.state.searchfield)
-			|| entry.website.t.toLowerCase().includes(this.state.searchfield)
+	filterEntries(entries, sf) {
+		let tmp = [];
+		console.log(sf)
+		for (const [i, e] of entries.entries()) {
+			let score = this.scoreEntry(e, sf);
+			if (score > 0) {
+				tmp.push(Object.assign(e, {'score': score}));
+			}
+		}
+		tmp = tmp.sort((a, b) => b.score - a.score);
+		return tmp;
 	}
 
 	/* 
 	 *Takes in an entry and gives a match score [0–1] based on the searchfield.
 	 */
-	scoreEntry(entry) {
+	scoreEntry(entry, sf) {
 		
-		const sf = this.state.searchfield;
-		const idxName = entry.name.t.toLowerCase().indexOf(sf);
-		const idxNameFull = entry.fullname.t.toLowerCase().indexOf(sf);
-		// deal with banks
-		let idxNameBank = -1;
+		const score_names = 1;
+		const score_keywords = 0.8;
+		const score_others = 0.3;
+
+		// top entries
+		let ref_names = [entry.name.t, entry.fullname.t];
 		if (entry.name.t.substring(0, 6) === 'ธนาคาร') {
-			idxNameBank = entry.name.t.substring(0, 6).indexOf(sf);
+			ref_names = ref_names.concat(entry.name.t.substring(6));
+		}
+		// keywords
+		let ref_keywords = [];
+		if (entry.keyword.t) {
+			ref_keywords = ref_keywords.concat(entry.keyword.t.split(',').map((x) => x.trim()));
 		}
 
-		// process other entries
-		
-		let ref = [entry.name.t, entry.fullname.t]
-		if (entry.name.t.substring(0, 6) === 'ธนาคาร') {
-			ref = ref.concat(entry.name.t.substring(6))
+		// find from top entries and keywords first
+		const result_names = ref_names.map((x) => this.indexToScore(x, sf) * score_names);
+		const result_keywords = ref_keywords.map((x) => this.indexToScore(x, sf) * score_keywords);
+		const tmp = Math.max(...result_names, ...result_keywords);
+		if (tmp) {
+			return tmp;
 		}
-		ref = ref.concat(entry.keyword.t.split(','))
-			.concat(myutil.trimURL(entry.website.t))
-			.concat(myutil.trimFacebook(entry.facebook.t))
-			.concat(entry.line.t)
-			.concat(entry.call.t.split('\n'))
 
+		// then find from other things
+		let ref_others = [myutil.trimURLplus(entry.website.t),
+											myutil.trimFacebook(entry.facebook.t),
+											entry.line.t,
+											entry.call.t.split('\n').map((x) => x.trim())];
+		const result_others = ref_others.map((x) => this.indexToScore(x, sf) * score_others);
+		return Math.max(...result_others);
 		
 	}
 
+	indexToScore(str, sf) {
+		const idx = str.toString().toLowerCase().indexOf(sf);
+		if (idx === -1) {
+			return 0
+		}
+		else if (idx === 0) {
+			return 0.5 + 0.5 * (sf.length / str.length);
+		}
+		return 0.5;
+	}
+
 	render() {
-		const {entries} = this.state;
-		const filteredEntries = entries.filter(entry => this.filterEntry(entry));
+		console.log('render...')
+		const {entries, searchfield} = this.state;
 		if (!entries.length) {
 			return <h1>Loading</h1>
 		}
@@ -75,7 +99,7 @@ class App extends React.Component {
 						</div>
 					</div>
 					<div id='area-content'>
-						<CardList entries={filteredEntries} />
+						<CardList entries={this.filterEntries(entries, searchfield)} />
 					</div>
 				</div>
 			);

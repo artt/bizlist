@@ -6,6 +6,14 @@ export function trimURL(fullurl) {
 	return tmp[2];
 }
 
+export function trimURLplus(fullurl) {
+	const tmp = fullurl.trim().match(/(\/\/www.|www\.|\/\/)([^\/\.]+)/);
+	if (tmp === null) {
+		return fullurl.trim();
+	}
+	return tmp[2];
+}
+
 export function trimPhone(phonetext) {
 	const tmp = phonetext.trim().match(/(\d{4}|\d-\d{4}-\d{4}|\d{3}-\d{3}-\d{4}|\d{3}-\d{3}-\d{3})/);
 	
