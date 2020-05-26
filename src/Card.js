@@ -24,7 +24,7 @@ function Card({entry}) {
 					</span>
 				</a>
 			}</div>
-			<div className='colorbar'>
+			<div className='colorbar bar0'>
 				<svg>
 					<path d='M 250 0
 									 v 80
@@ -34,7 +34,7 @@ function Card({entry}) {
 								fill={`${entry.color.t}`} />
 				</svg>
 			</div>
-			<div className='colorbar1'>
+			<div className='colorbar bar1'>
 				<svg>
 					<path d='M 150 0
 									 v 100
@@ -44,7 +44,7 @@ function Card({entry}) {
 								fill={`${entry.color.t}`} />
 				</svg>
 			</div>
-			<div className='colorbar2'>
+			<div className='colorbar bar2'>
 				<svg>
 					<path d='M 100 0
 									 v 150
