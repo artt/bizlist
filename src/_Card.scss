@@ -5,6 +5,9 @@
 	background-color: rgba(255, 255, 255, 0.8);
 	box-shadow: 0 5px 20px -10px black;
 	transition-duration: 0.5s;
+	position: relative;
+	overflow: hidden;
+
 }
 
 a {
@@ -43,4 +46,44 @@ a:hover {
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
 	content: "\f35d\00a0 ";
+}
+
+.colorbar {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 250px;
+	height: 80px;
+	fill: #bbb;
+	overflow: hidden;
+	opacity: 0.3;
+	transition-duration: 0.5s;
+}
+
+.colorbar1 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 150px;
+	height: 100px;
+	fill: #bbb;
+	overflow: hidden;
+	opacity: 0.3;
+	transition-duration: 0.5s;
+}
+
+.colorbar2 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100px;
+	height: 150px;
+	fill: #bbb;
+	overflow: hidden;
+	opacity: 0.3;
+	transition-duration: 0.5s;
+}
+
+.card:hover .colorbar {
+	opacity: 1;
 }

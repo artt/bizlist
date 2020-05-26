@@ -1,5 +1,5 @@
 export function trimURL(fullurl) {
-	const tmp = fullurl.trim().match(/(\/\/www.|www\.|\/\/)([^\/]+)/);
+	const tmp = fullurl.trim().match(/(\/\/www\.|www\.|\/\/)([^/]+)/);
 	if (tmp === null) {
 		return fullurl.trim();
 	}
@@ -7,7 +7,7 @@ export function trimURL(fullurl) {
 }
 
 export function trimURLplus(fullurl) {
-	const tmp = fullurl.trim().match(/(\/\/www.|www\.|\/\/)([^\/\.]+)/);
+	const tmp = fullurl.trim().match(/(\/\/www\.|www\.|\/\/)([^/.]+)/);
 	if (tmp === null) {
 		return fullurl.trim();
 	}
@@ -21,7 +21,7 @@ export function trimPhone(phonetext) {
 }
 
 export function trimFacebook(fburl) {
-	const tmp = fburl.trim().match(/facebook.com\/([^\/]+)\/?/);
+	const tmp = fburl.trim().match(/facebook.com\/([^/]+)\/?/);
 	if (tmp === null) {
 		return fburl.trim();
 	}
