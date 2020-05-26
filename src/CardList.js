@@ -8,7 +8,7 @@ function CardList({entries}) {
 				entries.map((entry, i) => {
 					return (<Card
 										key={i}
-										entry={entries[i]}
+										entry={entry}
 									/>);
 				})
 			}
