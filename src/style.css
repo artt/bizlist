@@ -95,6 +95,7 @@ body {
   transition-duration: 0.5s;
   position: relative;
   overflow: hidden;
+  z-index: 0;
 }
 
 a {
@@ -135,6 +136,14 @@ a:hover {
   content: " ";
 }
 
+.facebook {
+  font-size: small;
+}
+
+.line {
+  font-size: small;
+}
+
 .colorbar {
   position: absolute;
   right: 0;
@@ -143,6 +152,7 @@ a:hover {
   overflow: hidden;
   opacity: 0.3;
   transition-duration: 0.5s;
+  z-index: -1;
 }
 
 .colorbar.bar0 {
