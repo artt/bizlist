@@ -15,7 +15,6 @@
   vertical-align: middle;
 	position: fixed;
 	top: 10px;
-	// height: 200px;
 	width: 100%;
 	z-index: 10;
 	text-align: center;
@@ -23,7 +22,7 @@
 	@include size-lg {
 		background: unset;
 		top: unset;
-		width: 350px;
+		width: $logo-width;
 		margin: 30px;
 	}
 }
@@ -50,7 +49,7 @@
 
 	@include size-lg {
 		margin-top: unset;
-		margin-left: 350px;
+		margin-left: $logo-width;
 		margin-right: 20px;
 		padding: 30px;
 	}
@@ -59,8 +58,13 @@
 .container {
 	margin: $card-gap;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax($card-minwidth, 1fr));
   gap: $card-gap;
+
+	@media (max-width: $card-minwidth + $card-gap*2) {
+		margin: 5vw;
+		grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr));
+	}
 
   @include size-lg {
   	margin: $card-gap + 10px;

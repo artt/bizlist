@@ -17,7 +17,7 @@ class App extends React.Component {
 
 	onSearchChange = (event) => {
 		console.log('searchchange...')
-		this.setState({searchfield: event.target.value.toLowerCase()})
+		this.setState({searchfield: event.target.value.toLowerCase().replace(/[, -\.]/g,'')})
 	}
 
 	filterEntries(entries, sf) {
@@ -72,7 +72,7 @@ class App extends React.Component {
 	}
 
 	indexToScore(str, sf) {
-		const idx = str.toString().toLowerCase().indexOf(sf);
+		const idx = str.toString().toLowerCase().replace(/[, -\.]/g,'').indexOf(sf);
 		if (idx === -1) {
 			return 0
 		}

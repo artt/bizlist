@@ -28,32 +28,24 @@ a:hover {
 	font-weight: 400;
 }
 
-.phone {
+.ts {
 	font-size: small;
 }
 
-.phone:before {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	content: "\f879\00a0 ";
+.facebook a {
+	color: #4267B2;
 }
 
-.website {
-	font-size: small;
+.facebook a:hover {
+	color: darken(#4267B2, 10%);
 }
 
-.website:before {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	content: "\f35d\00a0 ";
+.line a {
+	color: #02B902;
 }
 
-.facebook {
-	font-size: small;
-}
-
-.line {
-	font-size: small;
+.line a:hover {
+	color: darken(#02B902, 10%);
 }
 
 .colorbar {
