@@ -107,7 +107,6 @@ a {
   color: #23517A;
   text-decoration: none;
 }
-
 a:hover {
   color: #3c85c7;
 }
@@ -128,17 +127,15 @@ a:hover {
 .facebook a {
   color: #4267B2;
 }
-
 .facebook a:hover {
-  color: #34518d;
+  color: #6283c5;
 }
 
 .line a {
   color: #02B902;
 }
-
 .line a:hover {
-  color: #018701;
+  color: #02d202;
 }
 
 .colorbar {
@@ -151,28 +148,23 @@ a:hover {
   transition-duration: 0.5s;
   z-index: -1;
 }
-
 .colorbar.bar0 {
   width: 250px;
   height: 80px;
 }
-
+.card:hover .colorbar.bar0 {
+  opacity: 1;
+}
 .colorbar.bar1 {
   width: 150px;
   height: 100px;
 }
-
 .colorbar.bar2 {
   width: 100px;
   height: 150px;
 }
-
 .card:hover .colorbar {
   opacity: 0.5;
-}
-
-.card:hover .bar0 {
-  opacity: 1;
 }
 
 .logo {

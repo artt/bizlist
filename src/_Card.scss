@@ -13,10 +13,9 @@
 a {
 	color: $primary-color;
 	text-decoration: none;
-}
-
-a:hover {
-	color: lighten($primary-color, 20%);
+	&:hover {
+		color: lighten($primary-color, 20%);
+	}
 }
 
 .card:hover {
@@ -34,18 +33,16 @@ a:hover {
 
 .facebook a {
 	color: #4267B2;
-}
-
-.facebook a:hover {
-	color: darken(#4267B2, 10%);
+	&:hover {
+		color: lighten(#4267B2, 10%);
+	}
 }
 
 .line a {
 	color: #02B902;
-}
-
-.line a:hover {
-	color: darken(#02B902, 10%);
+	&:hover {
+		color: lighten(#02B902, 5%);
+	}
 }
 
 .colorbar {
@@ -57,27 +54,22 @@ a:hover {
 	opacity: 0.3;
 	transition-duration: 0.5s;
 	z-index: -1;
-}
-
-.colorbar.bar0 {
-	width: 250px;
-	height: 80px;
-}
-
-.colorbar.bar1{
-	width: 150px;
-	height: 100px;
-}
-
-.colorbar.bar2 {
-	width: 100px;
-	height: 150px;
-}
-
-.card:hover .colorbar {
-	opacity: 0.5;
-}
-
-.card:hover .bar0 {
-	opacity: 1;
+	&.bar0 {
+		width: 250px;
+		height: 80px;
+		.card:hover & {
+			opacity: 1;
+		}
+	}
+	&.bar1{
+		width: 150px;
+		height: 100px;
+	}
+	&.bar2 {
+		width: 100px;
+		height: 150px;
+	}
+	.card:hover & {
+		opacity: 0.5;
+	}
 }

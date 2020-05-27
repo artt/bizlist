@@ -15,7 +15,7 @@ function Card({entry}) {
 					return (
 						<a href={`tel:${myutil.trimPhone(item)}`} key={i}>
 							<span className='ts'>
-								<i class="fas fa-phone-alt"></i> {item}<br />
+								{item} <i class="fas fa-phone"></i>&nbsp;
 							</span>
 						</a>
 					);
@@ -27,7 +27,7 @@ function Card({entry}) {
 				{ entry.website.t &&
 					<a href={entry.website.t} target='_blank' rel='noopener noreferrer'>
 						<span className='ts'>
-							<i class="fas fa-external-link-alt"></i> {myutil.trimURL(entry.website.t)}
+							{myutil.trimURL(entry.website.t)} <i class="fas fa-external-link-alt"></i>
 						</span>
 					</a>
 				}
@@ -36,19 +36,19 @@ function Card({entry}) {
 				{ entry.facebook.t &&
 					<span className='ts facebook'>
 						<a href={entry.facebook.t} target='_blank' rel='noopener noreferrer'>
-							<i className="fab fa-facebook-square" /> facebook
+							facebook <i className="fab fa-facebook-square" />
 						</a>
 					</span>
 				}
 				{ entry.line.t &&
 					<span className='ts line'>
 						&nbsp;<a href={`http://line.me/ti/p/${entry.line.t}`} target='_blank' rel='noopener noreferrer'>
-							<i className="fab fa-line" /> LINE
+							 LINE <i className="fab fa-line" />
 						</a>
 					</span>
 				}
 			</div>
-		{/* add QR for line https://quickchart.io/qr?text=http://ine.me/ti/p/@Bangkokbank&size=150 */}
+			{/* add QR for line https://quickchart.io/qr?text=http://ine.me/ti/p/@Bangkokbank&size=150 */}
 
 			{/* colorbar */}
 			<div className='colorbar bar0'>
