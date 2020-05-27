@@ -14,8 +14,8 @@ function Card({entry}) {
 				entry.call.t.split('\n').map((item, i) => {
 					return (
 						<a href={`tel:${myutil.trimPhone(item)}`} key={i}>
-							<span className='phone'>
-								{item}<br />
+							<span className='ts'>
+								<i class="fas fa-phone-alt"></i> {item}<br />
 							</span>
 						</a>
 					);
@@ -26,23 +26,22 @@ function Card({entry}) {
 			<div>
 				{ entry.website.t &&
 					<a href={entry.website.t} target='_blank' rel='noopener noreferrer'>
-						<span className='website'>
-							{myutil.trimURL(entry.website.t)}
+						<span className='ts'>
+							<i class="fas fa-external-link-alt"></i> {myutil.trimURL(entry.website.t)}
 						</span>
 					</a>
 				}
 			</div>
-
 			<div>
 				{ entry.facebook.t &&
-					<span className='facebook'>
+					<span className='ts facebook'>
 						<a href={entry.facebook.t} target='_blank' rel='noopener noreferrer'>
 							<i className="fab fa-facebook-square" /> facebook
 						</a>
 					</span>
 				}
-				{ entry.facebook.t &&
-					<span className='line'>
+				{ entry.line.t &&
+					<span className='ts line'>
 						&nbsp;<a href={`http://line.me/ti/p/${entry.line.t}`} target='_blank' rel='noopener noreferrer'>
 							<i className="fab fa-line" /> LINE
 						</a>

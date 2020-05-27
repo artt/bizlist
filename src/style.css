@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url(https://use.fontawesome.com/releases/v5.13.0/css/all.css);
 @import url("https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;400&display=swap");
@@ -76,8 +75,14 @@ body {
 .container {
   margin: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
+}
+@media (max-width: 390px) {
+  .container {
+    margin: 5vw;
+    grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr));
+  }
 }
 @media (min-width: 1200px) {
   .container {
@@ -116,32 +121,24 @@ a:hover {
   font-weight: 400;
 }
 
-.phone {
+.ts {
   font-size: small;
 }
 
-.phone:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: " ";
+.facebook a {
+  color: #4267B2;
 }
 
-.website {
-  font-size: small;
+.facebook a:hover {
+  color: #34518d;
 }
 
-.website:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: " ";
+.line a {
+  color: #02B902;
 }
 
-.facebook {
-  font-size: small;
-}
-
-.line {
-  font-size: small;
+.line a:hover {
+  color: #018701;
 }
 
 .colorbar {
