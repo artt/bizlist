@@ -48,6 +48,7 @@ function Card({entry}) {
 					</span>
 				}
 			</div>
+		{/* add QR for line https://quickchart.io/qr?text=http://ine.me/ti/p/@Bangkokbank&size=150 */}
 
 			{/* colorbar */}
 			<div className='colorbar bar0'>
