@@ -75,10 +75,10 @@ body {
 .container {
   margin: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
-@media (max-width: 390px) {
+@media (max-width: 360px) {
   .container {
     margin: 5vw;
     grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr));
