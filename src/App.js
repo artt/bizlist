@@ -1,30 +1,48 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import SearchBox from './SearchBox';
 import CardList from './CardList';
 import Logo from './Logo';
 import './style.css';
 import * as myutil from './myutil';
 
-class App extends React.Component {
+function App() {
 
-	constructor() {
-		super();
-		this.state = {
-			entries: [],
-			searchfield: ''
-		};
+	useEffect(() => {
+		fetch('https://spreadsheets.google.com/feeds/list/' + 
+				'***REMOVED***/***REMOVED***/public/values?alt=json')
+			.then(response => response.text())
+			.then(responsetext => processResponse(responsetext));
+	});
+
+	const [entries, setEntries] = useState([]);
+	const [searchfield, setSearchfield] = useState('');
+
+	console.log('render...')
+	if (!entries.length) {
+		return <h1>Loading</h1>
+	}
+	else {
+		return (
+			<div className='App'>
+				<div id='area-logo'>
+					<div id='logo-background' />
+					<div id='logo-wrapper'>
+						<Logo />
+						<SearchBox searchchange={onSearchChange} />
+					</div>
+				</div>
+				<div id='area-content'>
+					<CardList entries={filterEntries(entries, searchfield)} />
+				</div>
+			</div>
+		);
 	}
 
-	onSearchChange = (event) => {
-		console.log('searchchange...')
-		this.setState({searchfield: event.target.value.toLowerCase().replace(/[, -\.]/g,'')})
-	}
-
-	filterEntries(entries, sf) {
+	function filterEntries(entries, sf) {
 		let tmp = [];
 		console.log(sf)
 		for (const e of entries) {
-			let score = this.scoreEntry(e, sf);
+			let score = scoreEntry(e, sf);
 			if (score > 0) {
 				tmp.push(Object.assign(e, {'score': score}));
 			}
@@ -36,7 +54,7 @@ class App extends React.Component {
 	/* 
 	 * Takes in an entry and gives a match score [0–1] based on the searchfield.
 	 */
-	scoreEntry(entry, sf) {
+	function scoreEntry(entry, sf) {
 		
 		const score_names = 1;
 		const score_keywords = 0.8;
@@ -54,8 +72,8 @@ class App extends React.Component {
 		}
 
 		// find from top entries and keywords first
-		const result_names = ref_names.map((x) => this.indexToScore(x, sf) * score_names);
-		const result_keywords = ref_keywords.map((x) => this.indexToScore(x, sf) * score_keywords);
+		const result_names = ref_names.map((x) => indexToScore(x, sf) * score_names);
+		const result_keywords = ref_keywords.map((x) => indexToScore(x, sf) * score_keywords);
 		const tmp = Math.max(...result_names, ...result_keywords);
 		if (tmp) {
 			return tmp;
@@ -66,12 +84,12 @@ class App extends React.Component {
 											myutil.trimFacebook(entry.facebook.t),
 											entry.line.t,
 											entry.call.t.split('\n').map((x) => x.trim())];
-		const result_others = ref_others.map((x) => this.indexToScore(x, sf) * score_others);
+		const result_others = ref_others.map((x) => indexToScore(x, sf) * score_others);
 		return Math.max(...result_others);
 		
 	}
 
-	indexToScore(str, sf) {
+	function indexToScore(str, sf) {
 		const idx = str.toString().toLowerCase().replace(/[, -\.]/g,'').indexOf(sf);
 		if (idx === -1) {
 			return 0
@@ -82,41 +100,15 @@ class App extends React.Component {
 		return 0.5;
 	}
 
-	render() {
-		console.log('render...')
-		const {entries, searchfield} = this.state;
-		if (!entries.length) {
-			return <h1>Loading</h1>
-		}
-		else {
-			return (
-				<div className='App'>
-					<div id='area-logo'>
-						<div id='logo-background' />
-						<div id='logo-wrapper'>
-							<Logo />
-							<SearchBox searchchange={this.onSearchChange} />
-						</div>
-					</div>
-					<div id='area-content'>
-						<CardList entries={this.filterEntries(entries, searchfield)} />
-					</div>
-				</div>
-			);
-		}
-	}
-
-	processResponse(response) {
+	function processResponse(response) {
 		let reducedResponse = JSON.parse(response.replace(/gsx\$|\$/g,'')).feed.entry.filter(entry => {return entry.display.t === 'x'});
-		this.setState({entries: reducedResponse.map(({call, color, email, facebook, fullname, keyword, line, name, remark, website}) => 
-																								({call, color, email, facebook, fullname, keyword, line, name, remark, website}))})
+		setEntries(reducedResponse.map(({call, color, email, facebook, fullname, keyword, line, name, remark, website}) => 
+																		({call, color, email, facebook, fullname, keyword, line, name, remark, website})))
 	}
 
-	componentDidMount() {
-		fetch('https://spreadsheets.google.com/feeds/list/' + 
-				'***REMOVED***/***REMOVED***/public/values?alt=json')
-			.then(response => response.text())
-			.then(responsetext => this.processResponse(responsetext));
+	function onSearchChange(event) {
+		console.log('searchchange...')
+		setSearchfield(event.target.value.toLowerCase().replace(/[, -\.]/g,''));
 	}
 
 }
