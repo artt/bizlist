@@ -34,7 +34,7 @@ class App extends React.Component {
 	}
 
 	/* 
-	 *Takes in an entry and gives a match score [0–1] based on the searchfield.
+	 * Takes in an entry and gives a match score [0–1] based on the searchfield.
 	 */
 	scoreEntry(entry, sf) {
 		
