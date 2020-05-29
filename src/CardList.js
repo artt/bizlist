@@ -9,6 +9,7 @@ function CardList({entries}) {
 					return (<Card
 										key={i}
 										entry={entry}
+										className='isotope-item'
 									/>);
 				})
 			}

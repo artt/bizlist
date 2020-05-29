@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Isotope from 'isotope-layout';
 import SearchBox from './SearchBox';
 import CardList from './CardList';
 import Logo from './Logo';
@@ -7,15 +8,44 @@ import * as myutil from './myutil';
 
 function App() {
 
+	const [entries, setEntries] = useState([]);
+	const [searchfield, setSearchfield] = useState('');
+
+	// get data
 	useEffect(() => {
+		console.log('hyyyy')
 		fetch('https://spreadsheets.google.com/feeds/list/' + 
 				'***REMOVED***/***REMOVED***/public/values?alt=json')
 			.then(response => response.text())
 			.then(responsetext => processResponse(responsetext));
 	});
 
-	const [entries, setEntries] = useState([]);
-	const [searchfield, setSearchfield] = useState('');
+	// isotope
+	// const [isotope, setIsotope] = useState(null);
+
+	// // set up isotope
+	// useEffect(() => {
+	// 	console.log('xxx')
+	// 	if (isotope === null) {
+	// 		setIsotope(
+	// 			new Isotope(
+	// 				'.isotope-container',
+	// 				{
+	// 					itemSelector: '.isotope-item',
+	// 					layoutMode: 'fitRows'
+	// 				}
+	// 			)
+	// 		);
+	// 	}
+	// });
+
+	// useEffect(() => {
+ //   	isotope.arrange({
+ //   		filter: function(entry) {
+ //   			return scoreEntry(entry, searchfield);
+ //   		}
+ //   	});
+ //  }, [isotope, searchfield]);
 
 	console.log('render...')
 	if (!entries.length) {
@@ -32,7 +62,7 @@ function App() {
 					</div>
 				</div>
 				<div id='area-content'>
-					<CardList entries={filterEntries(entries, searchfield)} />
+					<CardList className='isotope-container' entries={filterEntries(entries, searchfield)} />
 				</div>
 			</div>
 		);
