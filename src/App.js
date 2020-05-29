@@ -8,11 +8,12 @@ import * as myutil from './myutil';
 function App() {
 
 	useEffect(() => {
+		console.log('fetch')
 		fetch('https://spreadsheets.google.com/feeds/list/' + 
 				'***REMOVED***/***REMOVED***/public/values?alt=json')
 			.then(response => response.text())
 			.then(responsetext => processResponse(responsetext));
-	});
+	}, []);
 
 	const [entries, setEntries] = useState([]);
 	const [searchfield, setSearchfield] = useState('');
