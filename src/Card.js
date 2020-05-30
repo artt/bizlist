@@ -7,17 +7,17 @@ import * as myutil from './myutil.js';
 function Card({entry}) {
 	return(
 		<div className='card'>
-			{/* call={entry.call.t} color={entry.color.t} email={entry.email.t}
-							facebook={entry.facebook.t} fullname={entry.fullname.t}
-							keyword={entry.keyword.t} line={entry.line.t}
-							name={entry.name.t} remark={entry.remark.t} website={entry.website.t} */}
+			{/* call={entry.call} color={entry.color} email={entry.email}
+							facebook={entry.facebook} fullname={entry.fullname}
+							keyword={entry.keyword} line={entry.line}
+							name={entry.name} remark={entry.remark} website={entry.website}*/}
 			
 			{/* title */}
-			<div className='title'>{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</div>
+			<div className='title'>{entry.fullname + (entry.remark && (' (' + entry.remark + ')'))}</div>
 			
 			{/* phone */}
-			<div>{ entry.call.t &&
-				entry.call.t.split('\n').map((item, i) => {
+			<div>{ entry.call &&
+				entry.call.split('\n').map((item, i) => {
 					return (
 						<a href={`tel:${myutil.trimPhone(item)}`} key={i}>
 							<span className='ts'>
@@ -30,25 +30,25 @@ function Card({entry}) {
 
 			{/* website, facebook, line */}
 			<div>
-				{ entry.website.t &&
-					<a href={entry.website.t} target='_blank' rel='noopener noreferrer'>
+				{ entry.website &&
+					<a href={entry.website} target='_blank' rel='noopener noreferrer'>
 						<span className='ts'>
-							{myutil.trimURL(entry.website.t)} <i className="fas fa-external-link-alt"></i>
+							{myutil.trimURL(entry.website)} <i className="fas fa-external-link-alt"></i>
 						</span>
 					</a>
 				}
 			</div>
 			<div>
-				{ entry.facebook.t &&
+				{ entry.facebook &&
 					<span className='ts facebook'>
-						<a href={entry.facebook.t} target='_blank' rel='noopener noreferrer'>
+						<a href={entry.facebook} target='_blank' rel='noopener noreferrer'>
 							facebook <i className="fab fa-facebook-square" />
 						</a>
 					</span>
 				}
-				{ entry.line.t &&
+				{ entry.line &&
 					<span className='ts line'>
-						&nbsp;<a href={`http://line.me/ti/p/${entry.line.t}`} target='_blank' rel='noopener noreferrer'>
+						&nbsp;<a href={`http://line.me/ti/p/${entry.line}`} target='_blank' rel='noopener noreferrer'>
 							 LINE <i className="fab fa-line" />
 						</a>
 					</span>
@@ -63,7 +63,7 @@ function Card({entry}) {
 									 v 80
 									 h -250
 									 C 100 80, 250 80, 250 0'
-								fill={`${entry.color.t}`} />
+								fill={`${entry.color}`} />
 				</svg>
 			</div>
 			<div className='colorbar bar1'>
@@ -72,7 +72,7 @@ function Card({entry}) {
 									 v 100
 									 h -150
 									 C 100 100, 150 50, 150 0'
-								fill={`${entry.color.t}`} />
+								fill={`${entry.color}`} />
 				</svg>
 			</div>
 			<div className='colorbar bar2'>
@@ -81,7 +81,7 @@ function Card({entry}) {
 									 v 150
 									 h -100
 									 C 100 150, 100 20, 100 0'
-								fill={`${entry.color.t}`} />
+								fill={`${entry.color}`} />
 				</svg>
 			</div>
 		</div>
