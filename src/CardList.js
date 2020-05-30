@@ -7,7 +7,7 @@ function CardList({entries}) {
 			{
 				entries.map((entry, i) => {
 					return (
-						<Card entry={entry} key={i} />
+						<Card entry={entry} key={i} datakey={i} />
 					);
 				})
 			}

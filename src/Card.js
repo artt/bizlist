@@ -4,9 +4,9 @@ import * as myutil from './myutil.js';
 
 
 
-function Card({entry}) {
+function Card({entry, datakey}) {
 	return(
-		<div className='card'>
+		<div className='card' datakey={datakey}>
 			{/* call={entry.call} color={entry.color} email={entry.email}
 							facebook={entry.facebook} fullname={entry.fullname}
 							keyword={entry.keyword} line={entry.line}

@@ -28,6 +28,12 @@ function App() {
 						{
 							itemSelector: '.card',
 							layoutMode: 'fitRows',
+							sortBy: 'weight',
+							getSortData: {
+								weight: function( itemElem ) {
+									return scoreEntry(entries[itemElem.getAttribute('datakey')], searchfield);
+								}
+							}
 						}
 					)
 				)
@@ -47,12 +53,11 @@ function App() {
 			// filter
 			isotope.arrange({
 				filter: function(itemElem) {
-					const title = itemElem.querySelector('.title').innerText;
-					return title.indexOf(searchfield) > -1;
+					return scoreEntry(entries[itemElem.getAttribute('datakey')], searchfield) > 0;
 				}
 			});
 		}
-	}, [searchfield]);
+	}, [searchfield, isotope]);
 
 	if (!entries.length) {
 		console.log('render A...')
@@ -155,12 +160,14 @@ function App() {
 				name: e.name.t,
 				remark: e.remark.t,
 				website: e.website.t,
+				score: 1
 			});
 		}));
 	}
 
 	function onSearchChange(event) {
 		setSearchfield(event.target.value.toLowerCase().replace(/[, -.]/g,''));
+			isotope.updateSortData(document.querySelector('.isotope-container'));
 	}
 
 }
