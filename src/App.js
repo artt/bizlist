@@ -62,14 +62,14 @@ function App() {
 		const score_others = 0.3;
 
 		// top entries
-		let ref_names = [entry.name.t, entry.fullname.t];
-		if (entry.fullname.t.substring(0, 6) === 'ธนาคาร') {
-			ref_names = ref_names.concat(entry.fullname.t.substring(6));
+		let ref_names = [entry.name, entry.fullname];
+		if (entry.fullname.substring(0, 6) === 'ธนาคาร') {
+			ref_names = ref_names.concat(entry.fullname.substring(6));
 		}
 		// keywords
 		let ref_keywords = [];
-		if (entry.keyword.t) {
-			ref_keywords = ref_keywords.concat(entry.keyword.t.split(',').map((x) => x.trim()));
+		if (entry.keyword) {
+			ref_keywords = ref_keywords.concat(entry.keyword.split(',').map((x) => x.trim()));
 		}
 
 		// find from top entries and keywords first
@@ -81,10 +81,10 @@ function App() {
 		}
 
 		// then find from other things
-		let ref_others = [myutil.trimURLplus(entry.website.t),
-											myutil.trimFacebook(entry.facebook.t),
-											entry.line.t,
-											entry.call.t.split('\n').map((x) => x.trim())];
+		let ref_others = [myutil.trimURLplus(entry.website),
+											myutil.trimFacebook(entry.facebook),
+											entry.line,
+											entry.call.split('\n').map((x) => x.trim())];
 		const result_others = ref_others.map((x) => indexToScore(x, sf) * score_others);
 		return Math.max(...result_others);
 		
@@ -103,8 +103,21 @@ function App() {
 
 	function processResponse(response) {
 		let reducedResponse = JSON.parse(response.replace(/gsx\$|\$/g,'')).feed.entry.filter(entry => {return entry.display.t === 'x'});
-		setEntries(reducedResponse.map(({call, color, email, facebook, fullname, keyword, line, name, remark, website}) => 
-																		({call, color, email, facebook, fullname, keyword, line, name, remark, website})))
+		setEntries(reducedResponse.map((e) => {
+			return({
+				call: e.call.t,
+				color: e.color.t,
+				email: e.email.t,
+				facebook: e.facebook.t,
+				fullname: e.fullname.t,
+				keyword: e.keyword.t,
+				line: e.line.t,
+				name: e.name.t,
+				remark: e.remark.t,
+				website: e.website.t,
+				score: 1
+			});
+		}));
 	}
 
 	function onSearchChange(event) {
