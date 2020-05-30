@@ -72,20 +72,20 @@ body {
   }
 }
 
-.container {
+.isotope-container {
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
 @media (max-width: 360px) {
-  .container {
+  .isotope-container {
     margin: 5vw;
     grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr));
   }
 }
 @media (min-width: 1200px) {
-  .container {
+  .isotope-container {
     margin: 30px;
     gap: 30px;
   }

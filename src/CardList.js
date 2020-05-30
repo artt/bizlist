@@ -3,14 +3,12 @@ import Card from './Card';
 
 function CardList({entries}) {
 	return(
-		<div className='container'>
+		<div className='isotope-container'>
 			{
 				entries.map((entry, i) => {
-					return (<Card
-										key={i}
-										entry={entry}
-										className='isotope-item'
-									/>);
+					return (
+						<Card entry={entry} key={i} />
+					);
 				})
 			}
 		</div>

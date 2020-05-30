@@ -2,9 +2,15 @@ import React from 'react';
 import './style.css';
 import * as myutil from './myutil.js';
 
+
+
 function Card({entry}) {
 	return(
 		<div className='card'>
+			{/* call={entry.call.t} color={entry.color.t} email={entry.email.t}
+							facebook={entry.facebook.t} fullname={entry.fullname.t}
+							keyword={entry.keyword.t} line={entry.line.t}
+							name={entry.name.t} remark={entry.remark.t} website={entry.website.t} */}
 			
 			{/* title */}
 			<div className='title'>{entry.fullname.t + (entry.remark.t && (' (' + entry.remark.t + ')'))}</div>
@@ -15,7 +21,7 @@ function Card({entry}) {
 					return (
 						<a href={`tel:${myutil.trimPhone(item)}`} key={i}>
 							<span className='ts'>
-								{item} <i class="fas fa-phone"></i>&nbsp;
+								{item} <i className="fas fa-phone"></i>&nbsp;
 							</span>
 						</a>
 					);
@@ -27,7 +33,7 @@ function Card({entry}) {
 				{ entry.website.t &&
 					<a href={entry.website.t} target='_blank' rel='noopener noreferrer'>
 						<span className='ts'>
-							{myutil.trimURL(entry.website.t)} <i class="fas fa-external-link-alt"></i>
+							{myutil.trimURL(entry.website.t)} <i className="fas fa-external-link-alt"></i>
 						</span>
 					</a>
 				}

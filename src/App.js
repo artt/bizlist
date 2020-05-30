@@ -10,42 +10,41 @@ function App() {
 
 	const [entries, setEntries] = useState([]);
 	const [searchfield, setSearchfield] = useState('');
+	// isotope
+	const [isotope, setIsotope] = useState(null);
 
 	// get data
 	useEffect(() => {
-		console.log('hyyyy')
 		fetch('https://spreadsheets.google.com/feeds/list/' + 
 				'***REMOVED***/***REMOVED***/public/values?alt=json')
 			.then(response => response.text())
-			.then(responsetext => processResponse(responsetext));
-	});
+			.then(responsetext => processResponse(responsetext))
+			.then(() => {
+				setIsotope(
+					new Isotope(
+						'.isotope-container',
+						{
+							itemSelector: '.card',
+							layoutMode: 'fitRows'
+						}
+					)
+				)
+			});
+	}, []);
 
-	// isotope
-	// const [isotope, setIsotope] = useState(null);
+	useEffect(() => {
+		if (entries.length) {
+			// score all entries
 
-	// // set up isotope
-	// useEffect(() => {
-	// 	console.log('xxx')
-	// 	if (isotope === null) {
-	// 		setIsotope(
-	// 			new Isotope(
-	// 				'.isotope-container',
-	// 				{
-	// 					itemSelector: '.isotope-item',
-	// 					layoutMode: 'fitRows'
-	// 				}
-	// 			)
-	// 		);
-	// 	}
-	// });
-
-	// useEffect(() => {
- //   	isotope.arrange({
- //   		filter: function(entry) {
- //   			return scoreEntry(entry, searchfield);
- //   		}
- //   	});
- //  }, [isotope, searchfield]);
+			// filter
+			isotope.arrange({
+				filter: function(entry) {
+					console.log(entry.getAttribute('data-key'))
+					return scoreEntry(entry, searchfield);
+				}
+			});
+		}
+	}, [searchfield]);
 
 	console.log('render...')
 	if (!entries.length) {
@@ -62,7 +61,7 @@ function App() {
 					</div>
 				</div>
 				<div id='area-content'>
-					<CardList className='isotope-container' entries={filterEntries(entries, searchfield)} />
+					<CardList entries={entries} />
 				</div>
 			</div>
 		);
@@ -70,7 +69,6 @@ function App() {
 
 	function filterEntries(entries, sf) {
 		let tmp = [];
-		console.log(sf)
 		for (const e of entries) {
 			let score = scoreEntry(e, sf);
 			if (score > 0) {
@@ -120,7 +118,7 @@ function App() {
 	}
 
 	function indexToScore(str, sf) {
-		const idx = str.toString().toLowerCase().replace(/[, -\.]/g,'').indexOf(sf);
+		const idx = str.toString().toLowerCase().replace(/[, -.]/g,'').indexOf(sf);
 		if (idx === -1) {
 			return 0
 		}
@@ -138,7 +136,7 @@ function App() {
 
 	function onSearchChange(event) {
 		console.log('searchchange...')
-		setSearchfield(event.target.value.toLowerCase().replace(/[, -\.]/g,''));
+		setSearchfield(event.target.value.toLowerCase().replace(/[, -.]/g,''));
 	}
 
 }

@@ -55,7 +55,7 @@
 	}
 }
 
-.container {
+.isotope-container {
 	margin: $card-gap;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax($card-minwidth, 1fr));
