@@ -9,8 +9,9 @@ function App() {
 
 	useEffect(() => {
 		console.log('fetch')
-		fetch('https://spreadsheets.google.com/feeds/list/' + 
-				'***REMOVED***/***REMOVED***/public/values?alt=json')
+		fetch('https://spreadsheets.google.com/feeds/list/' 
+				+ process.env.REACT_APP_FILEID + '/'
+				+ process.env.REACT_APP_SHEETID + '/public/values?alt=json')
 			.then(response => response.text())
 			.then(responsetext => processResponse(responsetext));
 	}, []);
@@ -30,6 +31,7 @@ function App() {
 					<div id='logo-wrapper'>
 						<Logo />
 						<SearchBox searchchange={onSearchChange} />
+						<p>v1</p>
 					</div>
 				</div>
 				<div id='area-content'>
