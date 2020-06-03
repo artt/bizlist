@@ -21,7 +21,7 @@ function App() {
 
 	console.log('render...')
 	if (!entries.length) {
-		return <h1>Loading</h1>
+		return <h1>Loading...</h1>
 	}
 	else {
 		return (
@@ -31,7 +31,7 @@ function App() {
 					<div id='logo-wrapper'>
 						<Logo />
 						<SearchBox searchchange={onSearchChange} />
-						<p>v1</p>
+						<p>v2</p>
 					</div>
 				</div>
 				<div id='area-content'>
